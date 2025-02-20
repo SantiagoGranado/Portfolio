@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Viewport para responsividad -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Santi</title>
+  <!-- Fuente Orbitron para la sección landing -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Three.js y VanillaTilt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+  <script module src="./js/bgStars.js" defer></script>
+  <script module src="./js/script.js" defer></script>
+
+  <link rel="stylesheet" href="./css/animationQuake.css">
+  <link rel="stylesheet" href="./css/style.css">
+  
+</head>
+
+<body class="min-h-screen bg-[#111] overflow-hidden relative">
+  <!-- Canvas de fondo de estrellas (se mantiene en toda la experiencia) -->
+  <canvas id="starfield" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
+
+  <!-- Contenedor principal de secciones -->
+  <div id="content" class="relative w-full h-screen">
+    <!-- Sección Landing (inicial) -->
+    <section id="landing" class="absolute inset-0 flex flex-col justify-center items-center text-center text-[#aaa]"
+      style="font-family: 'Orbitron', sans-serif;">
+      <h1 class="text-3xl sm:text-5xl px-4">Hola, soy Santi</h1>
+      <p class="mt-4 text-xl sm:text-2xl px-4">Estudiante de DAW y futuro desarrollador web</p>
+      <button id="btnConoceme" class="mt-8 text-2xl underline hover:text-white focus:outline-none">conóceme!</button>
+    </section>
+
+    <!-- Sección About (oculta inicialmente) -->
+    <section id="about" class="absolute inset-0 hidden overflow-y-auto">
+      <!-- Contenedor interno para animar la aparición -->
+      <div id="aboutContainer" class="max-w-[1200px] mx-auto p-5 relative z-10">
+        <!-- Sección: Sobre Mí + Logos -->
+        <section class="mb-16">
+          <div class="border border-white/40 rounded-lg p-8 shadow-lg bg-[#222]">
+            <div class="flex flex-col sm:flex-row items-center gap-8">
+              <!-- Foto -->
+              <div class="profile-img-container flex-none">
+                <img src="img/perfil.png" alt="Foto de Santi" class="w-full max-w-[250px] rounded-full border-4 border-white/30 shadow-lg">
+              </div>
+              <!-- Contenido Sobre Mí -->
+              <div class="flex-1 text-white">
+                <h1 class="text-center sm:text-left text-4xl md:text-5xl">Sobre Mí</h1>
+                <p class="mt-4 text-base sm:text-lg">
+                  Hola, soy Santi, estudiante de DAW y futuro desarrollador web. Apasionado de la tecnología y el diseño,
+                  siempre busco nuevos desafíos y oportunidades para aprender. Me encanta crear proyectos innovadores
+                  que combinan funcionalidad y estética para brindar experiencias únicas a los usuarios.
+                </p>
+              </div>
+            </div>
+            <!-- Logos -->
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+              <div
+                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5"
+                  class="w-full h-full object-contain shadow-lg">
+              </div>
+              <div
+                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3"
+                  class="w-full h-full object-contain shadow-lg">
+              </div>
+              <div
+                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
+                  class="w-full h-full object-contain shadow-lg">
+              </div>
+              <div
+                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js"
+                  class="w-full h-full object-contain shadow-lg">
+              </div>
+              <div
+                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React"
+                  class="w-full h-full object-contain shadow-lg">
+              </div>
+              <div
+                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg" alt="Git"
+                  class="w-full h-full object-contain shadow-lg">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sección: Proyectos -->
+        <section id="projects" class="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-16">
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="https://via.placeholder.com/400x300?text=Proyecto+1" alt="Proyecto 1" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2 text-white">Web Emprendimiento || IES Albarregas</h3>
+            <p class="text-base text-justify text-white flex-grow">Breve descripción del proyecto 1, resaltando las
+              tecnologías utilizadas y los objetivos logrados.</p>
+            <div class="flex gap-4 mt-4">
+              <a href="#" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
+              <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="https://via.placeholder.com/400x300?text=Proyecto+2" alt="Proyecto 2" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2 text-white">Comparador Gasolineras</h3>
+            <p class="text-base text-justify text-white flex-grow">Breve descripción del proyecto 2, destacando el
+              proceso de diseño y desarrollo.</p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/Task%207%20-%20Ajax" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://santiagogranado.github.io/Santi_Portfolio/Task%207%20-%20Ajax/" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="https://via.placeholder.com/400x300?text=Proyecto+3" alt="Proyecto 3" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2 text-white">Space Shooter || Juego Phaser</h3>
+            <p class="text-base text-justify text-white flex-grow">Ejemplo de mi experiencia en proyectos web con una
+              solución innovadora.</p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/SpaceShip%20Shooter" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://santigp01.itch.io/spaceshipattackt" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="https://via.placeholder.com/400x300?text=Proyecto+4" alt="Proyecto 4" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2 text-white">Spotify</h3>
+            <p class="text-base text-justify text-white flex-grow">Demostración de mi capacidad para resolver problemas
+              y crear soluciones efectivas.</p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/Spotify" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://santiagogranado.github.io/Santi_Portfolio/Spotify/" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+</body>
+
+</html>
