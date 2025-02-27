@@ -6,10 +6,20 @@
   <!-- Viewport para responsividad -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio Santi</title>
+
   <!-- Fuente Orbitron para la sección landing -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kulim+Park:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
+    rel="stylesheet">
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- Three.js y VanillaTilt -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
@@ -19,132 +29,243 @@
 
   <link rel="stylesheet" href="./css/animationQuake.css">
   <link rel="stylesheet" href="./css/style.css">
-  
 </head>
 
 <body class="min-h-screen bg-[#111] overflow-hidden relative">
-  <!-- Canvas de fondo de estrellas (se mantiene en toda la experiencia) -->
+
   <canvas id="starfield" class="fixed top-0 left-0 -z-10 w-full h-full"></canvas>
 
-  <!-- Contenedor principal de secciones -->
   <div id="content" class="relative w-full h-screen">
-    <!-- Sección Landing (inicial) -->
-    <section id="landing" class="absolute inset-0 flex flex-col justify-center items-center text-center text-[#aaa]"
-      style="font-family: 'Orbitron', sans-serif;">
-      <h1 class="text-3xl sm:text-5xl px-4">Hola, soy Santi</h1>
-      <p class="mt-4 text-xl sm:text-2xl px-4">Estudiante de DAW y futuro desarrollador web</p>
-      <button id="btnConoceme" class="mt-8 text-2xl underline hover:text-white focus:outline-none">conóceme!</button>
-    </section>
 
-    <!-- Sección About (oculta inicialmente) -->
-    <section id="about" class="absolute inset-0 hidden overflow-y-auto">
-      <!-- Contenedor interno para animar la aparición -->
+    <section id="landing"
+      class="absolute inset-0 flex flex-col justify-center items-center text-center text-[#EDEADE] border-gray-50"
+      style="font-family: 'Orbitron', sans-serif;">
+      <h1 class="text-3xl sm:text-5xl px-4">Santiago Granado Piñero</h1>
+      <p class="mt-4 text-xl sm:text-2xl px-4">Bienvenido a mi espacio digital</p>
+      <button id="btnConoceme"
+        class="mt-8 text-2xl hover:text-white focus:outline-none kulim-park-regular-italic">conóceme!</button>
+    </section>
+    <section id="about" class="absolute inset-0 hidden overflow-y-auto ">
+
       <div id="aboutContainer" class="max-w-[1200px] mx-auto p-5 relative z-10">
-        <!-- Sección: Sobre Mí + Logos -->
         <section class="mb-16">
           <div class="border border-white/40 rounded-lg p-8 shadow-lg bg-[#222]">
             <div class="flex flex-col sm:flex-row items-center gap-8">
-              <!-- Foto -->
               <div class="profile-img-container flex-none">
-                <img src="img/perfil.png" alt="Foto de Santi" class="w-full max-w-[250px] rounded-full border-4 border-white/30 shadow-lg">
+                <img src="img/perfil.png" alt="Foto de Santi"
+                  class="w-full max-w-[250px] rounded-full border-4 border-white/30 shadow-lg">
               </div>
-              <!-- Contenido Sobre Mí -->
-              <div class="flex-1 text-white">
+              <div class="flex-1 text-[#EDEADE]">
                 <h1 class="text-center sm:text-left text-4xl md:text-5xl">Sobre Mí</h1>
                 <p class="mt-4 text-base sm:text-lg">
-                  Hola, soy Santi, estudiante de DAW y futuro desarrollador web. Apasionado de la tecnología y el diseño,
-                  siempre busco nuevos desafíos y oportunidades para aprender. Me encanta crear proyectos innovadores
-                  que combinan funcionalidad y estética para brindar experiencias únicas a los usuarios.
+                  Hola, soy Santi, desarrollador web frontend. Me especializo en crear interfaces modernas y optimizadas
+                  con JavaScript, HTML, CSS, Bootstrap y Tailwind. Me considero una persona organizada, disciplinada y
+                  persistente: no paro hasta encontrar la solución a cada problema.
+
+                  Para mí, el desarrollo web es más que código, es la oportunidad de crear experiencias eficientes y
+                  atractivas.
                 </p>
               </div>
             </div>
-            <!-- Logos -->
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
+
+            <!-- Filtro SVG para inner shadow -->
+            <svg width="0" height="0" class="absolute">
+              <filter id="inner-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="blur" />
+                <feOffset in="blur" dx="0" dy="0" result="offsetBlur" />
+                <feComposite in="SourceGraphic" in2="offsetBlur" operator="arithmetic" k2="-1" k3="1"
+                  result="innerShadow" />
+                <feColorMatrix in="innerShadow" type="matrix" values="0 0 0 0 1  
+              0 0 0 0 1  
+              0 0 0 0 1  
+              0 0 0 0.3 0" result="shadow" />
+                <feComposite in="shadow" in2="SourceGraphic" operator="over" />
+              </filter>
+            </svg>
+
+            <!-- Contenedor de logos: oculto en móvil, visible en pantallas sm y superiores -->
+            <div class="hidden sm:flex mt-8 flex-wrap justify-center gap-4 text-[#EDEADE]">
+              <!-- HTML5 -->
               <div
-                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5"
-                  class="w-full h-full object-contain shadow-lg">
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
               </div>
+              <!-- CSS3 -->
               <div
-                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3"
-                  class="w-full h-full object-contain shadow-lg">
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
               </div>
+              <!-- JavaScript -->
               <div
-                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
-                  class="w-full h-full object-contain shadow-lg">
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
               </div>
+              <!-- Node.js -->
               <div
-                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js"
-                  class="w-full h-full object-contain shadow-lg">
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
               </div>
+              <!-- React -->
               <div
-                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React"
-                  class="w-full h-full object-contain shadow-lg">
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
               </div>
+              <!-- Git -->
               <div
-                class="w-[60px] sm:w-[80px] h-[60px] sm:h-[80px] p-2.5 transition-transform transform hover:scale-110">
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg" alt="Git"
-                  class="w-full h-full object-contain shadow-lg">
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
               </div>
+              <!-- TypeScript -->
+              <div
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" alt="TypeScript"
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
+              </div>
+              <!-- Next.js -->
+              <div
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" alt="Next.js"
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
+              </div>
+              <!-- Tailwind CSS -->
+              <div
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" alt="Tailwind CSS"
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
+              </div>
+              <!-- Angular -->
+              <div
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg" alt="Angular"
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
+              </div>
+              <!-- Vue.js -->
+              <div
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" alt="Vue.js"
+                  class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
+              </div>
+              <!-- Docker -->
+              <div
+                class="w-[40px] sm:w-[60px] h-[40px] sm:h-[60px] p-2.5 transition-transform transform hover:scale-110">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg"
+                  alt="Docker" class="w-full h-full object-contain" style="filter: url(#inner-shadow);">
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="projects"
+          class="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-16 text-[#EDEADE]">
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="./img/Empendimiento.webp" alt="Proyecto 1" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2">Web Emprendimiento || IES Albarregas</h3>
+            <p class="text-base flex-grow">
+              Proyecto de clase desarrollado para el instituto, donde se utilizó JavaScript, Tailwind y Astro para
+              estructurar la web, practicando el trabajo colaborativo mediante ramas en GitHub
+            </p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/WebEmprendimiento-IESAlbarregas"
+                class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://emprendimiento-zeta.vercel.app/"
+                class="px-4 py-2 bg-green-500 rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="./img/gasolinera.webp" alt="Proyecto 2" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2 ">Comparador Gasolineras</h3>
+            <p class="text-base flex-grow">
+              Comparador de gasolineras que utiliza una API para obtener precios actualizados, aplicando filtros que
+              ordenan las estaciones por costo, tipo y estado (abiertas o cerradas). Desarrollado con HTML, CSS y
+              JavaScript.
+            </p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/ComparadorGasolineras"
+                class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://santiagogranado.github.io/Santi_Portfolio/Task%207%20-%20Ajax/"
+                class="px-4 py-2 bg-green-500 rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="./img/juego.webp" alt="Proyecto 3" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2">Space Shooter || Juego Phaser</h3>
+            <p class="text-base flex-grow">
+              Juego de naves desarrollado con Phaser, destacando un diseño creativo de elementos visuales y escenarios
+              dinámicos. Se implementan mecánicas de combate, animaciones fluidas y efectos sonoros para ofrecer una
+              experiencia inmersiva y emocionante.
+            </p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/SpaceShip%20Shooter"
+                class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://santigp01.itch.io/spaceshipattackt"
+                class="px-4 py-2 bg-green-500 rounded hover:bg-green-700">Ejecutar</a>
+            </div>
+          </div>
+          <div
+            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
+            <img src="./img/spotify.webp" alt="Proyecto 4" class="w-full rounded mb-4">
+            <h3 class="text-2xl mb-2">Spotify</h3>
+            <p class="text-base flex-grow">
+              Recreación de Spotify, una aplicación web que consulta y añade canciones mediante una API, ofreciendo una
+              experiencia musical interactiva desarrollada en HTML, CSS y JavaScript.
+            </p>
+            <div class="flex gap-4 mt-4">
+              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/Spotify"
+                class="px-4 py-2 bg-blue-500 rounded hover:bg-blue-700">Ver Código</a>
+              <a href="https://santiagogranado.github.io/Santi_Portfolio/Spotify/"
+                class="px-4 py-2 bg-green-500 rounded hover:bg-green-700">Ejecutar</a>
             </div>
           </div>
         </section>
 
-        <!-- Sección: Proyectos -->
-        <section id="projects" class="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-16">
-          <div
-            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
-            <img src="https://via.placeholder.com/400x300?text=Proyecto+1" alt="Proyecto 1" class="w-full rounded mb-4">
-            <h3 class="text-2xl mb-2 text-white">Web Emprendimiento || IES Albarregas</h3>
-            <p class="text-base text-justify text-white flex-grow">Breve descripción del proyecto 1, resaltando las
-              tecnologías utilizadas y los objetivos logrados.</p>
-            <div class="flex gap-4 mt-4">
-              <a href="#" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
-              <a href="#" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
-            </div>
-          </div>
-          <div
-            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
-            <img src="https://via.placeholder.com/400x300?text=Proyecto+2" alt="Proyecto 2" class="w-full rounded mb-4">
-            <h3 class="text-2xl mb-2 text-white">Comparador Gasolineras</h3>
-            <p class="text-base text-justify text-white flex-grow">Breve descripción del proyecto 2, destacando el
-              proceso de diseño y desarrollo.</p>
-            <div class="flex gap-4 mt-4">
-              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/Task%207%20-%20Ajax" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
-              <a href="https://santiagogranado.github.io/Santi_Portfolio/Task%207%20-%20Ajax/" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
-            </div>
-          </div>
-          <div
-            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
-            <img src="https://via.placeholder.com/400x300?text=Proyecto+3" alt="Proyecto 3" class="w-full rounded mb-4">
-            <h3 class="text-2xl mb-2 text-white">Space Shooter || Juego Phaser</h3>
-            <p class="text-base text-justify text-white flex-grow">Ejemplo de mi experiencia en proyectos web con una
-              solución innovadora.</p>
-            <div class="flex gap-4 mt-4">
-              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/SpaceShip%20Shooter" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
-              <a href="https://santigp01.itch.io/spaceshipattackt" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
-            </div>
-          </div>
-          <div
-            class="tilt border border-white/40 rounded-lg p-5 shadow-lg transition hover:shadow-2xl bg-[#222] flex flex-col h-full">
-            <img src="https://via.placeholder.com/400x300?text=Proyecto+4" alt="Proyecto 4" class="w-full rounded mb-4">
-            <h3 class="text-2xl mb-2 text-white">Spotify</h3>
-            <p class="text-base text-justify text-white flex-grow">Demostración de mi capacidad para resolver problemas
-              y crear soluciones efectivas.</p>
-            <div class="flex gap-4 mt-4">
-              <a href="https://github.com/SantiagoGranado/Santi_Portfolio/tree/main/Spotify" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Ver Código</a>
-              <a href="https://santiagogranado.github.io/Santi_Portfolio/Spotify/" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700">Ejecutar</a>
-            </div>
-          </div>
+        <section id="contact" class="max-w-4xl mx-auto px-4 py-16 text-[#EDEADE]">
+          <div class="bg-[#222] border border-white/10 rounded-lg shadow-lg p-8">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Contáctame</h2>
+            <p class="text-gray-300 mb-8 text-lg">
+              ¿Tienes alguna duda o quieres colaborar en algún proyecto? ¡No dudes en enviarme un mensaje!
+            </p>
+
+            <!-- Formulario de contacto -->
+            <form action="index.html" class="grid grid-cols-1 gap-6 text-[#EDEADE]">
+              <div>
+                <label for="name" class="block mb-2 text-gray-200">Nombre</label>
+                <input type="text" id="name" name="name"
+                  class="w-full p-3 rounded-md bg-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  placeholder="Ingresa tu nombre" />
+              </div>
+              <div>
+                <label for="email" class="block mb-2 text-gray-200">Correo electrónico</label>
+                <input type="email" id="email" name="email"
+                  class="w-full p-3 rounded-md bg-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  placeholder="Ingresa tu correo electrónico" />
+              </div>
+              <div>
+                <label for="message" class="block mb-2 text-gray-200">Mensaje</label>
+                <textarea id="message" name="message" rows="5"
+                  class="w-full p-3 rounded-md bg-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  placeholder="Escribe tu mensaje aquí..."></textarea>
+              </div>
+              <button type="submit"
+                class="mx-auto w-32 py-3 px-4 text-sm font-semibold bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
+                Enviar
+              </button>
+            </form>
+
         </section>
+
       </div>
     </section>
   </div>
-
 </body>
 
 </html>

@@ -32,3 +32,10 @@
     animation: subtleGlow 6s ease-in-out infinite;
     cursor: pointer;
 }
+
+
+.kulim-park-regular-italic {
+    font-family: "Kulim Park", serif;
+    font-weight: 400;
+    font-style: italic;
+}
