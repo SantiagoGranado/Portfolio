@@ -235,31 +235,35 @@
               ¿Tienes alguna duda o quieres colaborar en algún proyecto? ¡No dudes en enviarme un mensaje!
             </p>
 
-            <!-- Formulario de contacto -->
-            <form action="index.html" class="grid grid-cols-1 gap-6 text-[#EDEADE]">
+            <!-- Formulario de contacto --> 
+            <form action="https://formspree.io/f/xvgzezoe" method="POST" class="grid grid-cols-1 gap-6 text-[#EDEADE]">
               <div>
                 <label for="name" class="block mb-2 text-gray-200">Nombre</label>
                 <input type="text" id="name" name="name"
                   class="w-full p-3 rounded-md bg-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                  placeholder="Ingresa tu nombre" />
+                  placeholder="Ingresa tu nombre" required />
               </div>
+
               <div>
                 <label for="email" class="block mb-2 text-gray-200">Correo electrónico</label>
                 <input type="email" id="email" name="email"
                   class="w-full p-3 rounded-md bg-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                  placeholder="Ingresa tu correo electrónico" />
+                  placeholder="Ingresa tu correo electrónico" required />
               </div>
+
               <div>
                 <label for="message" class="block mb-2 text-gray-200">Mensaje</label>
                 <textarea id="message" name="message" rows="5"
                   class="w-full p-3 rounded-md bg-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                  placeholder="Escribe tu mensaje aquí..."></textarea>
+                  placeholder="Escribe tu mensaje aquí..." required></textarea>
               </div>
+
               <button type="submit"
                 class="mx-auto w-32 py-3 px-4 text-sm font-semibold bg-blue-600 rounded-md hover:bg-blue-700 transition-colors">
                 Enviar
               </button>
             </form>
+
 
         </section>
 
